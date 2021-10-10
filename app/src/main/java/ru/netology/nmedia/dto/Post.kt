@@ -6,15 +6,12 @@ data class Post (
     val published: String = "",
     val author: String = "",
     var likedByMe: Boolean = false,
-    var numberLikes: Long = 9999L,
-    var share: Boolean = false,
-    var numberShare: Long = 85L,
+    var numberLikes: Long = 999999L,
+    var numberShare: Long = 10L,
     var view:Boolean = false,
     var numberViews: Long = 1000
 
         )
-
-
 
 fun view (count : Long) : String {
         when {
