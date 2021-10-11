@@ -32,23 +32,14 @@ class MainActivity : AppCompatActivity() {
                     }
                 )
 
-                if (post.likedByMe) {
-                    post.numberLikes++
-
-                } else {
-                    post.numberLikes--
-                }
-                numberLikes.text = view(post.numberLikes)
-
                 binding.likes.setOnClickListener {
                     viewModel.like()
                 }
 
 
                 binding.share.setOnClickListener {
-                    post.numberShare++
-                    numberShares.text = view(post.numberShare)
-          //          viewModel.share()
+                  numberShares.text = view(post.numberShare)
+                   viewModel.share()
                 }
 
             }
