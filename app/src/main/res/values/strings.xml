@@ -2,4 +2,6 @@
     <string name="app_name">NMedia</string>
     <string name="nmedia">NMedia!</string>
     <string name="avatar">avatar</string>
+    <string name="menu_remove">Remove</string>
+    <string name="edit">Edit</string>
 </resources>
