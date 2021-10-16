@@ -16,6 +16,41 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel: PostViewModel by viewModels()
+        viewModel.data.observe(this) { post ->
+            with(binding) {
+                avatar.setImageResource(R.drawable.ic_netology_48dp)
+                content.text = post.content
+                author.text = post.author
+                published.text = post.published
+                numberLikes.text = view(post.numberLikes)
+                numberShares.text = view(post.numberShare)
+
+                likes.setImageResource(
+                    if (post.likedByMe) {
+                        R.drawable.ic_baseline_favorite_24
+                    } else {
+                        R.drawable.ic_baseline_favorite_border_24
+                    }
+                )
+
+                binding.likes.setOnClickListener {
+                    viewModel.like()
+                }
+
+
+                binding.share.setOnClickListener {
+                  numberShares.text = view(post.numberShare)
+                   viewModel.share()
+                }
+
+            }
+        }
+    }
+}
+
+
+
+        val viewModel: PostViewModel by viewModels()
         val adapter = PostsAdapter (
             onLikeListener = {viewModel.likeById(it.id)},
             onShareListener= {viewModel.shareById(it.id)}
@@ -26,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
 
 
 
