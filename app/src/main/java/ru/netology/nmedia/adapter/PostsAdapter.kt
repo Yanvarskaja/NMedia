@@ -17,9 +17,9 @@ typealias OnRemoveListener = (post: Post) -> Unit
 
 class PostsAdapter(
     private val likeListener: OnLikeListener,
-   private val shareListener: OnShareListener,
+    private val shareListener: OnShareListener,
     private val removeListener: OnRemoveListener
-    ) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
+) : ListAdapter<Post, PostViewHolder>(PostDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = CardPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)

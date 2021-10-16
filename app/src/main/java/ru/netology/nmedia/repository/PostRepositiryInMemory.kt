@@ -107,7 +107,7 @@ class PostRepositoryInMemoryImpl: PostRepository {
 
     override fun save(post: Post) {
         if (post.id == 0L) {
-          data.value = listOf(post) + data.value.orEmpty()
+            data.value = listOf(post) + data.value.orEmpty()
             return
         }
     }
@@ -131,5 +131,3 @@ class PostRepositoryInMemoryImpl: PostRepository {
         data.value = posts
     }
 }
-
-
