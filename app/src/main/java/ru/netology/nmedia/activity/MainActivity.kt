@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import ru.netology.nmedia.adapter.OnActionListener
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.viewModel.PostViewModel
@@ -19,12 +20,36 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: PostViewModel by viewModels()
         val adapter = PostsAdapter (
-            likeListener = {viewModel.likeById(it.id)},
-            shareListener= {viewModel.shareById(it.id)},
-            removeListener = {viewModel.removeById(it.id)}
+//            likeListener = {viewModel.likeById(it.id)},
+//            shareListener= {viewModel.shareById(it.id)},
+//            removeListener = {viewModel.removeById(it.id)}
+        object : OnActionListener {
+            override fun onEditClicked(post: Post) {
+               viewModel.edit(post)
+            }
+
+            override fun onRemoveClicked(post: Post) {
+                viewModel.removeById(post.id)
+            }
+
+            override fun onLikeClicked(post: Post) {
+                viewModel.likeById(post.id)
+            }
+
+            override fun onShareClicked(post: Post) {
+                viewModel.shareById(post.id)
+            }
+        }
         )
         binding.posts.adapter = adapter
         viewModel.data.observe(this, adapter::submitList )
+        viewModel.edited.observe(this) {
+            if (it.id == 0L) {
+                return@observe
+            }
+            binding.content.setText(it.content)
+            binding.content.requestFocus()
+        }
 
         binding.save.setOnClickListener {
             with (binding.content) {

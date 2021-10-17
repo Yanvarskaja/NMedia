@@ -110,6 +110,13 @@ class PostRepositoryInMemoryImpl: PostRepository {
             data.value = listOf(post) + data.value.orEmpty()
             return
         }
+        data.value = data.value?.map {
+            if (it.id == post.id) {
+                it.copy( content = post.content)
+            } else {
+                it
+            }
+        }
     }
 
     override fun removeById(id: Long) {
