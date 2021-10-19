@@ -11,12 +11,18 @@ private val empty = Post()
 class PostViewModel: ViewModel() {
     private val repository: PostRepository = PostRepositoryInMemoryImpl()
     val edited = MutableLiveData(empty)
+    val cancelEdit = MutableLiveData(empty)
    // val edited = MutableLiveData<Post>
       //  get() = edited
     val data = repository.getAll()
     fun likeById(id: Long) = repository.likeById(id)
     fun shareById(id: Long) = repository.shareById(id)
     fun removeById(id: Long) = repository.removeById(id)
+
+
+    fun cancelEditing(post: Post) {
+        cancelEdit.value = post
+    }
 
     fun changeContent(content: String) {
         edited.value = edited.value?.copy(content = content)

@@ -20,6 +20,7 @@ interface OnActionListener {
     fun onShareClicked (post: Post) = Unit
     fun onRemoveClicked (post: Post) = Unit
     fun onEditClicked (post: Post) = Unit
+    fun onCancelEditingClicked (post: Post) = Unit
 }
 
 class PostsAdapter(
