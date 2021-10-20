@@ -38,29 +38,28 @@ class MainActivity : AppCompatActivity() {
                     viewModel.shareById(post.id)
                 }
 
-                override fun onCancelEditingClicked(post: Post) {
-                    viewModel.cancelEditing(post)
-                }
             }
         )
         binding.posts.adapter = adapter
         viewModel.data.observe(this, adapter::submitList)
 
-    binding.group.visibility = View.GONE //перестает занимать место на экране
         viewModel.edited.observe(this) {
             if (it.id == 0L) {
                 return@observe
             }
+            binding.cancelEditing.visibility = View.VISIBLE //отобразить
             binding.content.setText(it.content)
             binding.content.requestFocus()
-            binding.group.visibility = View.VISIBLE //отобразить
         }
 
         binding.save.setOnClickListener {
+
             with(binding.content) {
+
                 if (text.isNullOrBlank()) {
                     Toast.makeText(context, "Content must not be empty", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
+
                 }
                 viewModel.changeContent(text.toString())
                 viewModel.save()
@@ -68,16 +67,17 @@ class MainActivity : AppCompatActivity() {
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
-                binding.group.visibility = View.GONE //перестает занимать место на экране
+                binding.cancelEditing.visibility = View.GONE //перестает занимать место на экране
             }
         }
-
+        binding.cancelEditing.visibility = View.GONE //перестает занимать место на экране
         binding.cancelEditing.setOnClickListener {
             with(binding.content) {
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
-                binding.group.visibility = View.GONE //перестает занимать место на экране
+
+             binding.cancelEditing.visibility = View.GONE //перестает занимать место на экране
             }
         }
 

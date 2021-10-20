@@ -119,18 +119,6 @@ class PostRepositoryInMemoryImpl: PostRepository {
         }
     }
 
-  //  override fun cancelEditing(post: Post) {
-//        data.value = data.value?.map {
-//            if (post.id == it.id) {
-//         //       data.value = listOf(post) + data.value.orEmpty()
-//                return
-//            } else {
-//                it
-//            }
-//        }
- //   }
-
-
     override fun removeById(id: Long) {
         data.value = data.value?.filter { it.id != id }
     }
