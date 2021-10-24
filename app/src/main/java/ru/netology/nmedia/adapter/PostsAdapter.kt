@@ -49,12 +49,16 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            numberLikes.text = view(post.numberLikes)
-            numberShares.text = view(post.numberShare)
-            numberViews.text = view(post.numberViews)
-            likes.setImageResource(
-                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-            )
+           // numberLikes.text = view(post.numberLikes)
+          //  numberShares.text = view(post.numberShare)
+          //  numberViews.text = view(post.numberViews)
+            likes.isChecked = post.likedByMe
+            likes.text = "${view(post.numberLikes)}"
+            share.text = "${view(post.numberShare)}"
+            views.text = "${view(post.numberViews)}"
+//            likes.setImageResource(
+//                if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
+//            )
             likes.setOnClickListener{
                 actionListener.onLikeClicked(post)
             }
