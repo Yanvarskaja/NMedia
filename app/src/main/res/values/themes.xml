@@ -14,18 +14,18 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="LikeCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+    <style name="LikeCheckBox" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
         <item name="buttonTint">@color/like_checkbox_tint</item>
     </style>
 
     <style name="ShareButton" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
-        <item name="iconTint">@color/share_style_tint</item>
-        <item name="android:textColor">@color/view_style_tint</item>
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
     </style>
 
     <style name="ViewButton" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
-        <item name="iconTint">@color/view_style_tint</item>
-        <item name="android:textColor">@color/view_style_tint</item>
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:textColor">?attr/colorControlNormal</item>
     </style>
 
 

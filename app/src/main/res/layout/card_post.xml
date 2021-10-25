@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/likes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
         android:contentDescription="@string/description_post_like"
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@android:color/transparent"
-        android:button="@drawable/ic_like_24dp"
+        app:icon="@drawable/ic_like_24dp"
         tools:text="@sample/posts.json/data/likes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/content"
@@ -100,7 +100,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@android:color/transparent"
-        app:icon="@drawable/ic_share_24dp"
+        app:icon="@drawable/ic_baseline_share_24"
         tools:text="@sample/posts.json/data/shares"
         app:layout_constraintStart_toEndOf="@id/likes"
         app:layout_constraintTop_toBottomOf="@id/content"
@@ -114,7 +114,7 @@
         android:layout_marginStart="140dp"
         android:layout_marginTop="@dimen/common_spacing"
         android:background="@android:color/transparent"
-        app:icon="@drawable/ic_view_24dp"
+        app:icon="@drawable/ic_baseline_visibility_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/content"
