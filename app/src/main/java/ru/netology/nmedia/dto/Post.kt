@@ -1,5 +1,7 @@
 package ru.netology.nmedia.dto
 
+import android.widget.VideoView
+
 data class Post (
     val id: Long = 0L,
     val content: String = "",
@@ -7,8 +9,10 @@ data class Post (
     val author: String = "",
     val likedByMe: Boolean = false,
     val numberLikes: Long = 99L,
-    var numberShare: Long = 10L,
-    var numberViews: Long = 1000
+    val numberShare: Long = 10L,
+    val numberViews: Long = 1000,
+    val video: String? = null
+
 
 )
 

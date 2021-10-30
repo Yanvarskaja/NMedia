@@ -10,6 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NMedia">
         <activity
+            android:name=".EditPostActivityContract"
+            android:exported="true" />
+        <activity
+            android:name=".EditPostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NewPostActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name=".IntentHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <data android:mimeType="text/plain" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>

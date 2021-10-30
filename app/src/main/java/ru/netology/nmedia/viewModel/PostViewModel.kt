@@ -1,8 +1,10 @@
 package ru.netology.nmedia.viewModel
 
+import androidx.activity.result.launch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ru.netology.nmedia.EditPostActivityContract
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInMemoryImpl
@@ -28,6 +30,7 @@ class PostViewModel: ViewModel() {
     }
 
     fun edit (post: Post) {
+
     edited.value = post
     }
 }

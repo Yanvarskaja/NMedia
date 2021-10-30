@@ -88,7 +88,8 @@ class PostRepositoryInMemoryImpl: PostRepository {
             likedByMe = false,
             numberLikes = 2,
             numberShare = 2,
-            numberViews = 2
+            numberViews = 2,
+            video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
         ),
         Post(
             id = postId++,

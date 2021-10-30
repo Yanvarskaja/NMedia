@@ -1,8 +1,10 @@
 package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.activity.result.launch
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import androidx.recyclerview.widget.DiffUtil
@@ -16,6 +18,8 @@ interface OnActionListener {
     fun onShareClicked (post: Post) = Unit
     fun onRemoveClicked (post: Post) = Unit
     fun onEditClicked (post: Post) = Unit
+    fun onShare (post: Post) = Unit
+    fun onVideoClicked (post: Post) = Unit
 }
 
 class PostsAdapter(
@@ -63,7 +67,11 @@ class PostViewHolder(
                 actionListener.onLikeClicked(post)
             }
             share.setOnClickListener{
-                actionListener.onShareClicked(post)
+                actionListener.onShare(post)
+            }
+            if (post.video == null) video.visibility = View.GONE
+            video.setOnClickListener {
+                actionListener.onVideoClicked(post)
             }
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
