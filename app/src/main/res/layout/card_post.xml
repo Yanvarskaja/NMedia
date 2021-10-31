@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/author"
         android:text="@sample/posts.json/data/published" />
 
-    <TextView
+    <ImageView
         android:id="@+id/video"
         android:layout_width="220dp"
         android:layout_height="120dp"

@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.activity.result.launch
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import androidx.recyclerview.widget.DiffUtil
@@ -69,7 +70,7 @@ class PostViewHolder(
             share.setOnClickListener{
                 actionListener.onShare(post)
             }
-            if (post.video == null) video.visibility = View.GONE
+            video.isGone = post.video == null
             video.setOnClickListener {
                 actionListener.onVideoClicked(post)
             }
