@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.activity.result.launch
 import androidx.core.view.isGone
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import androidx.recyclerview.widget.DiffUtil
@@ -21,6 +23,7 @@ interface OnActionListener {
     fun onEditClicked (post: Post) = Unit
     fun onShare (post: Post) = Unit
     fun onVideoClicked (post: Post) = Unit
+    fun onContentClicked (post: Post) = Unit
 }
 
 class PostsAdapter(
@@ -73,6 +76,9 @@ class PostViewHolder(
             video.isGone = post.video == null
             video.setOnClickListener {
                 actionListener.onVideoClicked(post)
+            }
+            content.setOnClickListener {
+                actionListener.onContentClicked(post)
             }
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {

@@ -7,15 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContract
 
-class EditPostActivityContract : ActivityResultContract<String, String?>() {
-    override fun createIntent(context: Context, input: String?): Intent =
-        Intent(context, EditPostActivity::class.java).putExtra(Intent.EXTRA_TEXT, input)
-
-
-    override fun parseResult(resultCode: Int, intent: Intent?): String? =
-        if (resultCode == Activity.RESULT_OK) {
-            intent?.getStringExtra(Intent.EXTRA_TEXT)
-        } else {
-            null
-        }
-}
+//class EditPostActivityContract : ActivityResultContract<String, String?>() {
+//    override fun createIntent(context: Context, input: String?): Intent =
+//        Intent(context, EditPostActivity::class.java).putExtra(Intent.EXTRA_TEXT, input)
+//
+//
+//    override fun parseResult(resultCode: Int, intent: Intent?): String? =
+//        if (resultCode == Activity.RESULT_OK) {
+//            intent?.getStringExtra(Intent.EXTRA_TEXT)
+//        } else {
+//            null
+//        }
+//
+//}

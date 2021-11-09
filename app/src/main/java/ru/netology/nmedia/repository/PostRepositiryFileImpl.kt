@@ -3,8 +3,11 @@ package ru.netology.nmedia.repository
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import ru.netology.nmedia.R
 import ru.netology.nmedia.dto.Post
 import java.io.File
 
@@ -20,7 +23,7 @@ class PostRepositoryFileImpl(
     private val filename = "posts.json"
 
 
-    private var postId = 1L
+ //   private var postId = 1L
     private var posts = emptyList<Post>()
 //
     private val data = MutableLiveData(posts)
@@ -41,7 +44,8 @@ class PostRepositoryFileImpl(
 
     override fun save(post: Post) {
         if (post.id == 0L) {
-            data.value = listOf(post.copy(id = postId++)) + data.value.orEmpty()
+            posts = listOf(post.copy(id = posts.firstOrNull()?.id?.inc()?: + 1)) + posts.orEmpty()
+            data.value = posts
             sync()
             return
         }
@@ -78,6 +82,7 @@ class PostRepositoryFileImpl(
         data.value = posts
         sync()
     }
+
 
     private fun sync() {
         context.openFileOutput(filename, Context.MODE_PRIVATE).bufferedWriter().use {

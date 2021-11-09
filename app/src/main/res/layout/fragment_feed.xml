@@ -4,20 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".FeedFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/posts"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/card_post"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-<!--    <androidx.constraintlayout.widget.Barrier-->
+    <!--    <androidx.constraintlayout.widget.Barrier-->
 <!--        android:id="@+id/toolsBarrier"-->
 <!--        app:barrierDirection="top"-->
 <!--        app:constraint_referenced_ids="content, save"-->
@@ -37,6 +26,19 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@id/toolsBarrier" />-->
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/posts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/card_post" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/newPost"
         android:layout_width="wrap_content"
@@ -47,6 +49,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/actualPost"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:listitem="@layout/card_post"-->
+
+<!--        />-->
 
 
 
