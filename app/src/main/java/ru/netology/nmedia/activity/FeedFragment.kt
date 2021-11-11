@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.launch
 import androidx.activity.viewModels
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -73,7 +74,8 @@ class FeedFragment : Fragment() {
                 }
 
                 override fun onContentClicked(post: Post) {
-                    findNavController().navigate(R.id.action_feedFragment2_to_actualPostFragment, Bundle(id))
+                    findNavController().navigate(R.id.action_feedFragment_to_actualPostFragment, bundleOf("id" to post.id))
+
                 }
             })
         binding.posts.adapter = adapter

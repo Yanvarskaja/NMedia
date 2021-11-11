@@ -35,7 +35,7 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
             val text = it.getStringExtra(Intent.EXTRA_TEXT)
             if (text.isNullOrBlank()) {
                 findNavController(R.id.nav_main)
-                    .navigate(R.id.action_feedFragment2_to_actualPostFragment, Bundle().apply {
+                    .navigate(R.id.action_feedFragment_to_actualPostFragment, Bundle().apply {
                         contentArg = text
                     })
                 return@let

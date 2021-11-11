@@ -34,7 +34,6 @@ class NewPostFragment : Fragment() {
     ): View {
 
         val binding = FragmentNewPostBinding.inflate(layoutInflater)
-        val viewModel: PostViewModel by activityViewModels()
 
   //      setContentView(binding.root)
         binding.content.requestFocus()
