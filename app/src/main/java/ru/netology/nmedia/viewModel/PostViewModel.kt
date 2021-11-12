@@ -1,6 +1,7 @@
 package ru.netology.nmedia.viewModel
 
 import android.app.Application
+import android.content.Context
 import androidx.activity.result.launch
 import androidx.lifecycle.*
 //import ru.netology.nmedia.EditPostActivityContract
@@ -33,8 +34,8 @@ class PostViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun edit (post: Post) {
+        edited.value = post
 
-    edited.value = post
     }
 
         fun chosenPost(id: Long): LiveData<Post?> = data.map { posts ->

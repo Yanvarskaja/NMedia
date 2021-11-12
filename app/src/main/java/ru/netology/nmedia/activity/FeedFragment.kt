@@ -27,9 +27,10 @@ import ru.netology.nmedia.viewModel.PostViewModel
 import ru.netology.nmedia.dto.Post
 
 class FeedFragment : Fragment() {
-    private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment
-    )
+    val viewModel: PostViewModel by activityViewModels()
+//    val viewModel: PostViewModel by viewModels(
+//        ownerProducer = ::requireParentFragment
+//    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +44,9 @@ class FeedFragment : Fragment() {
         val adapter = PostsAdapter(
             object : OnActionListener {
                 override fun onEditClicked(post: Post) {
-                    viewModel.edit(post)
+                viewModel.edit(post)
+                    findNavController().navigate(R.id.action_feedFragment_to_editPostFragment)
+
                 }
 
                 override fun onRemoveClicked(post: Post) {
@@ -74,7 +77,9 @@ class FeedFragment : Fragment() {
                 }
 
                 override fun onContentClicked(post: Post) {
-                    findNavController().navigate(R.id.action_feedFragment_to_actualPostFragment, bundleOf("id" to post.id))
+                    findNavController().navigate(
+                        R.id.action_feedFragment_to_actualPostFragment, bundleOf("id" to post.id)
+                    )
 
                 }
             })
@@ -91,7 +96,6 @@ class FeedFragment : Fragment() {
         }
 
 
-
 //        val launcherEditPost = registerForActivityResult(EditPostActivityContract()) { text ->
 //            text ?: return@registerForActivityResult
 //            viewModel.changeContent(text.toString())
@@ -103,12 +107,11 @@ class FeedFragment : Fragment() {
 //            }
 //            launcherEditPost.launch(it.content)
 //        }
-//        return binding.root
-//    }
-        return binding.root
+       return binding.root
+  }
+
     }
 
-}
 
 
 

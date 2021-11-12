@@ -42,5 +42,21 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
             }
 
         }
+
+        intent?.let {
+            if (it.action != Intent.ACTION_SEND) {
+                return@let
+            }
+
+            val text = it.getStringExtra(Intent.EXTRA_TEXT)
+            if (text.isNullOrBlank()) {
+                findNavController(R.id.nav_main)
+                    .navigate(R.id.action_feedFragment_to_editPostFragment, Bundle().apply {
+                        contentArg = text
+                    })
+                return@let
+            }
+
+        }
     }
 }

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -24,9 +25,6 @@ import ru.netology.nmedia.viewModel.PostViewModel
 
 class ActualPostFragment : Fragment(R.layout.activity_actual_post_fragment) {
 
-    private val viewModel: PostViewModel by viewModels(
-        ownerProducer = ::requireParentFragment
-    )
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,7 +32,7 @@ class ActualPostFragment : Fragment(R.layout.activity_actual_post_fragment) {
     ): View {
         val binding = ActivityActualPostFragmentBinding.inflate(layoutInflater)
         val viewModel: PostViewModel by activityViewModels()
-        val actualId: Long = arguments?.getLong("actaulId") ?: 0
+        val actualId: Long = arguments?.getLong("id") ?: 0
 
         viewModel.chosenPost(actualId).observe(viewLifecycleOwner) { post ->
             post?: run {
@@ -55,7 +53,7 @@ class ActualPostFragment : Fragment(R.layout.activity_actual_post_fragment) {
                     viewModel.likeById(post.id)
                 }
 
-                if (post.video == null) video.isGone
+                video.isGone = post.video == null
                 video.setOnClickListener {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
                     val chooser = Intent.createChooser(intent, null)
@@ -83,6 +81,7 @@ class ActualPostFragment : Fragment(R.layout.activity_actual_post_fragment) {
                                 }
                                 R.id.menu_edit -> {
                                     viewModel.edit(post)
+                                    findNavController().navigate(R.id.action_actualPostFragment_to_editPostFragment)
                                     true
                                 }
                                 else -> false
@@ -95,7 +94,7 @@ class ActualPostFragment : Fragment(R.layout.activity_actual_post_fragment) {
 
             }
 
-        }
+       }
         return binding.root
     }
 }
