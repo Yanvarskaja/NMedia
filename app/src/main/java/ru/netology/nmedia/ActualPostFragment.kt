@@ -47,30 +47,30 @@ class ActualPostFragment : Fragment(R.layout.activity_actual_post_fragment) {
                 avatar
                 published.text = post.published
                 likes.text = view(post.numberLikes)
-                share.text = view(post.numberShare)
-                views.text = view(post.numberViews)
+//                share.text = view(post.numberShare)
+//                views.text = view(post.numberViews)
                 likes.isChecked = post.likedByMe
 
                 likes.setOnClickListener {
                     viewModel.likeById(post.id)
                 }
 
-                video.isGone = post.video == null
-                video.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
-                    val chooser = Intent.createChooser(intent, null)
-                    startActivity(chooser)
-                }
+             //   video.isGone = post.video == null
+//                video.setOnClickListener {
+//                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+//                    val chooser = Intent.createChooser(intent, null)
+//                    startActivity(chooser)
+//                }
 
-                share.setOnClickListener {
-                    viewModel.shareById(post.id)
-                    val intent = Intent(Intent.ACTION_SEND).apply {
-                        putExtra(Intent.EXTRA_TEXT, post.content)
-                        type = "text/plain"
-                    }
-                    val chooser = Intent.createChooser(intent, null)
-                    startActivity(chooser)
-                }
+//                share.setOnClickListener {
+//                    viewModel.shareById(post.id)
+//                    val intent = Intent(Intent.ACTION_SEND).apply {
+//                        putExtra(Intent.EXTRA_TEXT, post.content)
+//                        type = "text/plain"
+//                    }
+//                    val chooser = Intent.createChooser(intent, null)
+//                    startActivity(chooser)
+//                }
 
                 menu.setOnClickListener {
                     PopupMenu(it.context, it).apply {

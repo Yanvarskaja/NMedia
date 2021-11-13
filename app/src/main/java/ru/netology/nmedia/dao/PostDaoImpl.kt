@@ -17,7 +17,7 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
             ${PostColumns.COLUMN_NUMBER_LIKES} INTEGER NOT NULL DEFAULT 0,
             ${PostColumns.COLUMN_NUMBER_SHARE} INTEGER NOT NULL DEFAULT 0,
             ${PostColumns.COLUMN_NUMBER_VIEWS} INTEGER NOT NULL DEFAULT 0,
-            ${PostColumns.COLUMN_VIDEO} TEXT NOT NULL,
+            ${PostColumns.COLUMN_NUMBER_VIEWS} TEXT
         );
         """.trimIndent()
     }
@@ -42,7 +42,7 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
             COLUMN_NUMBER_LIKES,
             COLUMN_NUMBER_SHARE,
             COLUMN_NUMBER_VIEWS,
-            COLUMN_VIDEO
+           COLUMN_VIDEO
         )
     }
 
@@ -70,6 +70,11 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
             put(PostColumns.COLUMN_AUTHOR, "Me")
             put(PostColumns.COLUMN_CONTENT, post.content)
             put(PostColumns.COLUMN_PUBLISHED, "now")
+            put(PostColumns.COLUMN_LIKED_BY_ME, 0)
+            put(PostColumns.COLUMN_NUMBER_LIKES, 0)
+            put(PostColumns.COLUMN_NUMBER_SHARE, 0)
+            put(PostColumns.COLUMN_NUMBER_VIEWS, 0)
+            put(PostColumns.COLUMN_VIDEO, "video")
         }
         val id = if (post.id != 0L) {
             db.update(
