@@ -8,12 +8,14 @@ import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.R
+import ru.netology.nmedia.dao.PostDao
 import ru.netology.nmedia.dto.Post
 import java.io.File
 
 
 class PostRepositoryFileImpl(
     private val context: Context
+  //  private val dao: PostDao
 ) : PostRepository {
 
     private val gson = Gson()
@@ -23,7 +25,7 @@ class PostRepositoryFileImpl(
     private val filename = "posts.json"
 
 
- //   private var postId = 1L
+
     private var posts = emptyList<Post>()
 //
     private val data = MutableLiveData(posts)
@@ -37,7 +39,8 @@ class PostRepositoryFileImpl(
                 data.value = posts
             }
         }
-
+//        posts = dao.getAll()
+//        data.value = posts
     }
 
     override fun getAll(): LiveData<List<Post>> = data
@@ -57,10 +60,21 @@ class PostRepositoryFileImpl(
             }
         }
         sync()
+//        val id = post.id
+//        val saved = dao.save(post)
+//        posts = if (id == 0L) {
+//            listOf(saved) + posts
+//        } else {
+//            posts.map {
+//                if (it.id != id) it else saved
+//            }
+//        }
+//        data.value = posts
     }
 
     override fun removeById(id: Long) {
-        data.value = data.value?.filter { it.id != id }
+        posts = posts.filter { it.id != id }
+        data.value = posts
         sync()
     }
 
