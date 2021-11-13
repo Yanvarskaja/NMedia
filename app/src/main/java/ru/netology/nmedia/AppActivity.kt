@@ -4,10 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import ru.netology.nmedia.NewPostFragment.Companion.contentArg
+import ru.netology.nmedia.viewModel.PostViewModel
 
 class AppActivity : AppCompatActivity(R.layout.activity_app) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

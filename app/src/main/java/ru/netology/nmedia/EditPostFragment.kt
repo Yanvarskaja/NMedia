@@ -20,13 +20,16 @@ import ru.netology.nmedia.viewModel.PostViewModel
 
 
 class EditPostFragment : Fragment() {
+    private val viewModel: PostViewModel by viewModels(
+        ownerProducer = ::requireParentFragment
+    )
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentEditPostBinding.inflate(layoutInflater)
-        val viewModel: PostViewModel by activityViewModels()
+   //     val viewModel: PostViewModel by activityViewModels()
             binding.content.setText(viewModel.edited.value?.content)
             binding.content.requestFocus()
 

@@ -42,11 +42,11 @@ class NewPostFragment : Fragment() {
         }
         binding.save.setOnClickListener {
        //     val content =  binding.content.text?.toString()
-            val  result = binding.content.text
+            val  result = binding.content.text?.toString()
             if (!result.isNullOrBlank()) {
             //    setResult((Activity.RESULT_CANCELED))
            // } else {
-                viewModel.changeContent(result.toString())
+                viewModel.changeContent(result)
                 viewModel.save()
                 AndroidUtils.hideKeyboard(binding.root)
 //                val intent = Intent()

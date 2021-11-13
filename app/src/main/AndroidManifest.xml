@@ -10,15 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NMedia">
         <activity
-            android:name=".ActualPostFragment"
-            android:exported="true" />
-        <activity
-            android:name=".Fragment"
-            android:exported="true" />
-        <activity
-            android:name=".ActualPostFragment2"
-            android:exported="true" />
-        <activity
             android:name=".AppActivity"
             android:exported="true">
             <intent-filter>

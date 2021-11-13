@@ -24,14 +24,16 @@ import ru.netology.nmedia.utils.StringArg
 import ru.netology.nmedia.viewModel.PostViewModel
 
 class ActualPostFragment : Fragment(R.layout.activity_actual_post_fragment) {
-
+    private val viewModel: PostViewModel by viewModels(
+        ownerProducer = ::requireParentFragment
+    )
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = ActivityActualPostFragmentBinding.inflate(layoutInflater)
-        val viewModel: PostViewModel by activityViewModels()
+  //      val viewModel: PostViewModel by activityViewModels()
         val actualId: Long = arguments?.getLong("id") ?: 0
 
         viewModel.chosenPost(actualId).observe(viewLifecycleOwner) { post ->
