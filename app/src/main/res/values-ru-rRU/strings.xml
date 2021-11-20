@@ -7,4 +7,8 @@
     <string name="edit">Изменить</string>
     <string name="description_post_like">Нравится</string>
     <string name="description_post_share">Поделился</string>
+    <string name="google_play_unavailable">Google Api Недоступно</string>
+    <string name="channel_remote_name">Уведомление сервера</string>
+    <string name="channel_remote_description">Уведомления с удаленного сервера</string>
+
 </resources>
